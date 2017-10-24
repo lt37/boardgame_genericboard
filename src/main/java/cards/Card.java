@@ -1,8 +1,8 @@
 package cards;
 
 public class Card {
-    String name;
-    String image;
+    protected String name;
+    protected String image;
 
     public void setName(String name) {
         this.name = name;

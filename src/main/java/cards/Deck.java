@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class Deck {
-    List<Card> cards;
+    protected List<Card> cards;
 
     public void setCards(List<Card> cards) {
         this.cards = cards;
