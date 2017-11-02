@@ -1,6 +1,6 @@
 package board;
 
-public class PlaceableComportment {
+public class PlaceableBehavior {
         private Case aCase;
 
         public Case getaCase() {
