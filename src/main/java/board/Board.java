@@ -85,19 +85,18 @@ public class Board {
     /**
      *
      * @param token
-     * @param direction    1:TOP 2:TOP/RIGH 3:RIGHT 4:RIGHT/BOT 5:BOT 6:BOT/LEFT 7:LEFT 8:LEFT/TOP
+     * @param direction    1 (default) :TOP 2:TOP/RIGHT 3:RIGHT 4:BOTTOM/RIGHT 5:BOTTOM 6:BOTTOM/LEFT 7:LEFT 8: (default) TOP/LEFT
      * @param nbCase
      */
-    public void movment(IPlaceable token, int direction, int nbCase){
-        int[] initialCoordonate = token.getCase().getCoordonate();
+    public void movement(IPlaceable token, int direction, int nbCase) {
+        int[] initialCoordinate = token.getCase().getCoordonate();
         token.getCase().removeToken(token);
-        int tabPlacment = this.columns*initialCoordonate[1]+initialCoordonate[0];
-        int newCoordonate;
+        int tabPlacment = this.columns*initialCoordinate[1]+initialCoordinate[0];
 
-        //TODO: Traiter l'erreur et la faire remonté
+        //TODO: Traiter l'erreur et la faire remonter
         try{
         switch(direction) {
-            case 1: this.cases.get(tabPlacment-(this.columns*nbCase)).addToken(token);
+            case 1: default: this.cases.get(tabPlacment-(this.columns*nbCase)).addToken(token);
             break;
             case 2: this.cases.get(tabPlacment-(this.columns*nbCase)+nbCase).addToken(token);
             break;
@@ -113,6 +112,7 @@ public class Board {
             break;
             case 8: this.cases.get(tabPlacment-(this.columns*nbCase)-nbCase).addToken(token);
             break;
+
             }
         }catch (Exception e){
             e.printStackTrace();
