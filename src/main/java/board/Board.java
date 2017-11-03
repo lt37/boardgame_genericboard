@@ -26,6 +26,7 @@ public class Board {
         this.name = name;
         this.cases = cases;
         this.columns = column;
+        this.lines = lines;
     }
     public List<Case> getCases() {
         return cases;
@@ -111,8 +112,6 @@ public class Board {
             case 7: this.cases.get(tabPlacment-nbCase);
             break;
             case 8: this.cases.get(tabPlacment-(this.columns*nbCase)-nbCase).addToken(token);
-            break;
-            default:;
             break;
             }
         }catch (Exception e){
