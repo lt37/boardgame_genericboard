@@ -94,6 +94,13 @@
         </plugins>
     </build>
 
+    <distributionManagement>
+        <repository>
+            <id>bintray-repo-boardgame_genericboard</id>
+            <url>https://bintray.com/lt37/maven-repo/boardgame_genericboard;publish=1</url>
+        </repository>
+    </distributionManagement>
+
 
     <dependencies>
 
