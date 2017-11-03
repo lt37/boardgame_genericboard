@@ -43,7 +43,7 @@
     <!-- ADAPTER les coordonnées -->
     <groupId>fr.univtln.m2dapm.boardgame</groupId>
     <artifactId>BoardGame_GenericBoard</artifactId>
-    <version>1.0</version>
+    <version>1.1-SNAPSHOT</version>
     <packaging>jar</packaging>
     <!-- ADAPTER les coordonnées -->
 
