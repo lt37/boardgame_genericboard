@@ -3,6 +3,7 @@ package cards;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.lang.IndexOutOfBoundsException;
 
 public class Deck {
     protected List<Card> cards;
@@ -40,6 +41,9 @@ public class Deck {
      * @return List of cards drawn.
      */
     public List<Card> draw(int index, int nb){
+        if(index >= cards.size()){
+            throw new IndexOutOfBoundsException();
+        }
         List<Card> drawedCards = new ArrayList<>();
         for(int i=0; ((i+index)<cards.size() && i<nb); i++){
             drawedCards.add(cards.get(index));
@@ -65,6 +69,9 @@ public class Deck {
      * @return List of cards in the second pack of cards
      */
     public List<Card> cut(int index){
+        if(index >= cards.size()){
+            throw new IndexOutOfBoundsException();
+        }
         List<Card> secondPart = new ArrayList<>();
 
         // Look if index is in the second half of the deck
@@ -93,6 +100,9 @@ public class Deck {
      * @return List of cards revealed
      */
     public List<Card> reveal(int index, int nb){
+        if(index >= cards.size()){
+            throw new IndexOutOfBoundsException();
+        }
         List<Card> revealedCards = new ArrayList<>();
         for(int i=0; ((i+index)<cards.size() && i<nb); i++){
             revealedCards.add(cards.get(i+index));
@@ -108,6 +118,9 @@ public class Deck {
      * @param index : Position from where cards will be add
      */
     public void addCards(List<Card> addedCards, int index){
+        if(index >= cards.size()){
+            throw new IndexOutOfBoundsException();
+        }
         for (Card card:addedCards) {
             cards.add(index, card);
         }
