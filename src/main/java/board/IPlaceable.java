@@ -2,9 +2,9 @@ package board;
 
 public interface IPlaceable {
 
-    public  Case getCase();
-    public  void setCase(Case newCase);
-    public  void changeCase() ;
+    public Square getSquare();
+    public  void setSquare(Square newSquare);
+    public  void changeSquare() ;
 
 }
 
