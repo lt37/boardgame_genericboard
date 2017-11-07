@@ -86,31 +86,31 @@ public class Board {
      *
      * @param token
      * @param direction    1 (default) :TOP 2:TOP/RIGHT 3:RIGHT 4:BOTTOM/RIGHT 5:BOTTOM 6:BOTTOM/LEFT 7:LEFT 8: (default) TOP/LEFT
-     * @param nbCase
+     * @param nbSquares
      */
-    public void movement(IPlaceable token, int direction, int nbCase) {
-        int[] initialCoordinate = token.getCase().getCoordinates();
-        token.getCase().removeToken(token);
+    public void movement(IPlaceable token, int direction, int nbSquares) {
+        int[] initialCoordinate = token.getSquare().getCoordinates();
+        token.getSquare().removeToken(token);
         int tabPlacment = this.columns*initialCoordinate[1]+initialCoordinate[0];
 
         //TODO: Traiter l'erreur et la faire remonter
         try{
         switch(direction) {
-            case 2: this.squares.get(tabPlacment-(this.columns*nbCase)+nbCase).addToken(token);
+            case 2: this.squares.get(tabPlacment-(this.columns*nbSquares)+nbSquares).addToken(token);
             break;
-            case 3: this.squares.get(tabPlacment+nbCase);
+            case 3: this.squares.get(tabPlacment+nbSquares);
             break;
-            case 4: this.squares.get(tabPlacment+(this.columns*nbCase)+nbCase).addToken(token);
+            case 4: this.squares.get(tabPlacment+(this.columns*nbSquares)+nbSquares).addToken(token);
             break;
-            case 5: this.squares.get(tabPlacment+(this.columns*nbCase)).addToken(token);
+            case 5: this.squares.get(tabPlacment+(this.columns*nbSquares)).addToken(token);
             break;
-            case 6: this.squares.get(tabPlacment+(this.columns*nbCase)-nbCase).addToken(token);
+            case 6: this.squares.get(tabPlacment+(this.columns*nbSquares)-nbSquares).addToken(token);
             break;
-            case 7: this.squares.get(tabPlacment-nbCase);
+            case 7: this.squares.get(tabPlacment-nbSquares);
             break;
-            case 8: this.squares.get(tabPlacment-(this.columns*nbCase)-nbCase).addToken(token);
+            case 8: this.squares.get(tabPlacment-(this.columns*nbSquares)-nbSquares).addToken(token);
             break;
-            default: this.squares.get(tabPlacment-(this.columns*nbCase)).addToken(token);
+            default: this.squares.get(tabPlacment-(this.columns*nbSquares)).addToken(token);
             break;
 
             }
