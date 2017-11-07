@@ -1,13 +1,13 @@
 package board;
 
 public class PlaceableBehavior {
-        private Case aCase;
+        private Square square;
 
-        public Case getaCase() {
-                return aCase;
+        public Square getSquare() {
+                return square;
         }
 
-        public void setaCase(Case aCase) {
-                this.aCase = aCase;
+        public void setSquare(Square square) {
+                this.square = square;
         }
 }
