@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Board {
-    private List<Case> cases= new ArrayList<>();
+    private List<Square> squares = new ArrayList<>();
     private int lines;
     private int columns;
     private String name;
@@ -18,22 +18,22 @@ public class Board {
             int[] coord = new int[2];
             coord[0]=i%column;
             coord[1]=((i-i%column)/column);
-            cases.add(new Case(coord));
+            squares.add(new Square(coord));
         }
     }
 
-    public Board(String name,List<Case> cases, int column,int lines){
+    public Board(String name, List<Square> squares, int column, int lines){
         this.name = name;
-        this.cases = cases;
+        this.squares = squares;
         this.columns = column;
         this.lines = lines;
     }
-    public List<Case> getCases() {
-        return cases;
+    public List<Square> getSquares() {
+        return squares;
     }
 
-    public void setCases(List<Case> cases) {
-        this.cases = cases;
+    public void setSquares(List<Square> squares) {
+        this.squares = squares;
     }
 
     public int getLines() {
@@ -69,13 +69,13 @@ public class Board {
 
         if (lines != board.lines) return false;
         if (columns != board.columns) return false;
-        if (cases != null ? !cases.equals(board.cases) : board.cases != null) return false;
+        if (squares != null ? !squares.equals(board.squares) : board.squares != null) return false;
         return name != null ? name.equals(board.name) : board.name == null;
     }
 
     @Override
     public int hashCode() {
-        int result = cases != null ? cases.hashCode() : 0;
+        int result = squares != null ? squares.hashCode() : 0;
         result = 31 * result + lines;
         result = 31 * result + columns;
         result = 31 * result + (name != null ? name.hashCode() : 0);
@@ -89,28 +89,28 @@ public class Board {
      * @param nbCase
      */
     public void movement(IPlaceable token, int direction, int nbCase) {
-        int[] initialCoordinate = token.getCase().getCoordonate();
+        int[] initialCoordinate = token.getCase().getCoordinates();
         token.getCase().removeToken(token);
         int tabPlacment = this.columns*initialCoordinate[1]+initialCoordinate[0];
 
         //TODO: Traiter l'erreur et la faire remonter
         try{
         switch(direction) {
-            case 2: this.cases.get(tabPlacment-(this.columns*nbCase)+nbCase).addToken(token);
+            case 2: this.squares.get(tabPlacment-(this.columns*nbCase)+nbCase).addToken(token);
             break;
-            case 3: this.cases.get(tabPlacment+nbCase);
+            case 3: this.squares.get(tabPlacment+nbCase);
             break;
-            case 4: this.cases.get(tabPlacment+(this.columns*nbCase)+nbCase).addToken(token);
+            case 4: this.squares.get(tabPlacment+(this.columns*nbCase)+nbCase).addToken(token);
             break;
-            case 5: this.cases.get(tabPlacment+(this.columns*nbCase)).addToken(token);
+            case 5: this.squares.get(tabPlacment+(this.columns*nbCase)).addToken(token);
             break;
-            case 6: this.cases.get(tabPlacment+(this.columns*nbCase)-nbCase).addToken(token);
+            case 6: this.squares.get(tabPlacment+(this.columns*nbCase)-nbCase).addToken(token);
             break;
-            case 7: this.cases.get(tabPlacment-nbCase);
+            case 7: this.squares.get(tabPlacment-nbCase);
             break;
-            case 8: this.cases.get(tabPlacment-(this.columns*nbCase)-nbCase).addToken(token);
+            case 8: this.squares.get(tabPlacment-(this.columns*nbCase)-nbCase).addToken(token);
             break;
-            default: this.cases.get(tabPlacment-(this.columns*nbCase)).addToken(token);
+            default: this.squares.get(tabPlacment-(this.columns*nbCase)).addToken(token);
             break;
 
             }

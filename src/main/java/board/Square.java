@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Case {
+public class Square {
 
     private List<IPlaceable> tokens = new ArrayList<>();
-    private int[] coordonate;
+    private int[] coordinates;
 
 
-    Case(int[] coordonate) {
-        this.coordonate = coordonate;
+    Square(int[] coordinates) {
+        this.coordinates = coordinates;
     }
 
     public List<IPlaceable> getTokens() {
@@ -22,12 +22,12 @@ public class Case {
         this.tokens = tokens;
     }
 
-    public int[] getCoordonate() {
-        return coordonate;
+    public int[] getCoordinates() {
+        return coordinates;
     }
 
-    public void setCoordonate(int[] coordonate) {
-        this.coordonate = coordonate;
+    public void setCoordinates(int[] coordinates) {
+        this.coordinates = coordinates;
     }
 
     public void addToken(IPlaceable token){
@@ -50,18 +50,18 @@ public class Case {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Case)) return false;
+        if (!(o instanceof Square)) return false;
 
-        Case aCase = (Case) o;
+        Square aSquare = (Square) o;
 
-        if (tokens != null ? !tokens.equals(aCase.tokens) : aCase.tokens != null) return false;
-        return Arrays.equals(coordonate, aCase.coordonate);
+        if (tokens != null ? !tokens.equals(aSquare.tokens) : aSquare.tokens != null) return false;
+        return Arrays.equals(coordinates, aSquare.coordinates);
     }
 
     @Override
     public int hashCode() {
         int result = tokens != null ? tokens.hashCode() : 0;
-        result = 31 * result + Arrays.hashCode(coordonate);
+        result = 31 * result + Arrays.hashCode(coordinates);
         return result;
     }
 }
