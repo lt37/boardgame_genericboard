@@ -91,32 +91,34 @@ public class Board {
         int[] initialCoordonate = token.getCase().getCoordonate();
         token.getCase().removeToken(token);
         int tabPlacment = this.columns*initialCoordonate[1]+initialCoordonate[0];
-        int newCoordonate;
 
-        //TODO: Traiter l'erreur et la faire remonté
+        Case newCase = null;
+
         try{
         switch(direction) {
-            case 1: this.cases.get(tabPlacment-(this.columns*nbCase)).addToken(token);
+            case 1: newCase = this.cases.get(tabPlacment-(this.columns*nbCase));
             break;
-            case 2: this.cases.get(tabPlacment-(this.columns*nbCase)+nbCase).addToken(token);
+            case 2: newCase = this.cases.get(tabPlacment-(this.columns*nbCase)+nbCase);
             break;
-            case 3: this.cases.get(tabPlacment+nbCase);
+            case 3: newCase = this.cases.get(tabPlacment+nbCase);
             break;
-            case 4: this.cases.get(tabPlacment+(this.columns*nbCase)+nbCase).addToken(token);
+            case 4: newCase = this.cases.get(tabPlacment+(this.columns*nbCase)+nbCase);
             break;
-            case 5: this.cases.get(tabPlacment+(this.columns*nbCase)).addToken(token);
+            case 5: newCase = this.cases.get(tabPlacment+(this.columns*nbCase));
             break;
-            case 6: this.cases.get(tabPlacment+(this.columns*nbCase)-nbCase).addToken(token);
+            case 6: newCase = this.cases.get(tabPlacment+(this.columns*nbCase)-nbCase);
             break;
-            case 7: this.cases.get(tabPlacment-nbCase);
+            case 7: newCase =  this.cases.get(tabPlacment-nbCase);
             break;
-            case 8: this.cases.get(tabPlacment-(this.columns*nbCase)-nbCase).addToken(token);
-            break;
-            default:;
+            case 8: newCase = this.cases.get(tabPlacment-(this.columns*nbCase)-nbCase);
             break;
             }
+
+            newCase.addToken(token);
         }catch (Exception e){
             e.printStackTrace();
         }
+
+
     }
 }

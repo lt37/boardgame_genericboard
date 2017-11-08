@@ -19,7 +19,13 @@ public class Case {
     }
 
     public void setTokens(List<IPlaceable> tokens) {
+        for(IPlaceable token : this.tokens) {
+            token.setCase(null);
+        }
         this.tokens = tokens;
+        for(IPlaceable token : this.tokens) {
+            token.setCase(this);
+        }
     }
 
     public int[] getCoordonate() {
@@ -32,19 +38,27 @@ public class Case {
 
     public void addToken(IPlaceable token){
         tokens.add(token);
+        token.setCase(this);
     }
 
     public void addTokens(List<IPlaceable> tokenList){
         tokens.addAll(tokenList);
+        for (IPlaceable token : tokenList){
+            token.setCase(this);
+        }
     }
 
     public void removeToken(IPlaceable token){
         tokens.remove(token);
+        token.setCase(null);
 
     }
 
     public void removeAllToken(){
         tokens.clear();
+        for (IPlaceable token : tokens){
+            token.setCase(null);
+        }
     }
 
     @Override
