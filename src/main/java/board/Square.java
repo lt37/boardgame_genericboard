@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Case {
+public class Square {
 
     private List<IPlaceable> tokens = new ArrayList<>();
-    private int[] coordonate;
+    private int[] coordinates;
 
 
-    Case(int[] coordonate) {
-        this.coordonate = coordonate;
+    Square(int[] coordinates) {
+        this.coordinates = coordinates;
     }
 
     public List<IPlaceable> getTokens() {
@@ -20,62 +20,62 @@ public class Case {
 
     public void setTokens(List<IPlaceable> tokens) {
         for(IPlaceable token : this.tokens) {
-            token.setCase(null);
+            token.setSquare(null);
         }
         this.tokens = tokens;
         for(IPlaceable token : this.tokens) {
-            token.setCase(this);
+            token.setSquare(this);
         }
     }
 
-    public int[] getCoordonate() {
-        return coordonate;
+    public int[] getCoordinates() {
+        return coordinates;
     }
 
-    public void setCoordonate(int[] coordonate) {
-        this.coordonate = coordonate;
+    public void setCoordinates(int[] coordinates) {
+        this.coordinates = coordinates;
     }
 
     public void addToken(IPlaceable token){
         tokens.add(token);
-        token.setCase(this);
+        token.setSquare(this);
     }
 
     public void addTokens(List<IPlaceable> tokenList){
         tokens.addAll(tokenList);
         for (IPlaceable token : tokenList){
-            token.setCase(this);
+            token.setSquare(this);
         }
     }
 
     public void removeToken(IPlaceable token){
         tokens.remove(token);
-        token.setCase(null);
+        token.setSquare(null);
 
     }
 
     public void removeAllToken(){
         tokens.clear();
         for (IPlaceable token : tokens){
-            token.setCase(null);
+            token.setSquare(null);
         }
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Case)) return false;
+        if (!(o instanceof Square)) return false;
 
-        Case aCase = (Case) o;
+        Square aSquare = (Square) o;
 
-        if (tokens != null ? !tokens.equals(aCase.tokens) : aCase.tokens != null) return false;
-        return Arrays.equals(coordonate, aCase.coordonate);
+        if (tokens != null ? !tokens.equals(aSquare.tokens) : aSquare.tokens != null) return false;
+        return Arrays.equals(coordinates, aSquare.coordinates);
     }
 
     @Override
     public int hashCode() {
         int result = tokens != null ? tokens.hashCode() : 0;
-        result = 31 * result + Arrays.hashCode(coordonate);
+        result = 31 * result + Arrays.hashCode(coordinates);
         return result;
     }
 }

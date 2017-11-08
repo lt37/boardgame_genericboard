@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Board {
-    private List<Case> cases= new ArrayList<>();
+    private List<Square> squares = new ArrayList<>();
     private int lines;
     private int columns;
     private String name;
@@ -18,21 +18,22 @@ public class Board {
             int[] coord = new int[2];
             coord[0]=i%column;
             coord[1]=((i-i%column)/column);
-            cases.add(new Case(coord));
+            squares.add(new Square(coord));
         }
     }
 
-    public Board(String name,List<Case> cases, int column,int lines){
+    public Board(String name, List<Square> squares, int column, int lines){
         this.name = name;
-        this.cases = cases;
+        this.squares = squares;
         this.columns = column;
+        this.lines = lines;
     }
-    public List<Case> getCases() {
-        return cases;
+    public List<Square> getSquares() {
+        return squares;
     }
 
-    public void setCases(List<Case> cases) {
-        this.cases = cases;
+    public void setSquares(List<Square> squares) {
+        this.squares = squares;
     }
 
     public int getLines() {
@@ -68,53 +69,55 @@ public class Board {
 
         if (lines != board.lines) return false;
         if (columns != board.columns) return false;
-        if (cases != null ? !cases.equals(board.cases) : board.cases != null) return false;
+        if (squares != null ? !squares.equals(board.squares) : board.squares != null) return false;
         return name != null ? name.equals(board.name) : board.name == null;
     }
 
     @Override
     public int hashCode() {
-        int result = cases != null ? cases.hashCode() : 0;
+        int result = squares != null ? squares.hashCode() : 0;
         result = 31 * result + lines;
         result = 31 * result + columns;
         result = 31 * result + (name != null ? name.hashCode() : 0);
         return result;
     }
 
+
     /**
      *
      * @param token
-     * @param direction    1:TOP 2:TOP/RIGH 3:RIGHT 4:RIGHT/BOT 5:BOT 6:BOT/LEFT 7:LEFT 8:LEFT/TOP
+     * @param direction 1 (default) :TOP 2:TOP/RIGHT 3:RIGHT 4:BOTTOM/RIGHT 5:BOTTOM 6:BOTTOM/LEFT 7:LEFT 8: (default) TOP/LEFT
      * @param nbCase
      */
     public void movment(IPlaceable token, int direction, int nbCase){
-        int[] initialCoordonate = token.getCase().getCoordonate();
-        token.getCase().removeToken(token);
+        int[] initialCoordonate = token.getSquare().getCoordinates();
+        token.getSquare().removeToken(token);
         int tabPlacment = this.columns*initialCoordonate[1]+initialCoordonate[0];
 
-        Case newCase = null;
+        Square newSquare = null;
 
         try{
         switch(direction) {
-            case 1: newCase = this.cases.get(tabPlacment-(this.columns*nbCase));
+            case 1: newSquare = this.squares.get(tabPlacment-(this.columns*nbCase));
             break;
-            case 2: newCase = this.cases.get(tabPlacment-(this.columns*nbCase)+nbCase);
+            case 2: newSquare = this.squares.get(tabPlacment-(this.columns*nbCase)+nbCase);
             break;
-            case 3: newCase = this.cases.get(tabPlacment+nbCase);
+            case 3: newSquare = this.squares.get(tabPlacment+nbCase);
             break;
-            case 4: newCase = this.cases.get(tabPlacment+(this.columns*nbCase)+nbCase);
+            case 4: newSquare = this.squares.get(tabPlacment+(this.columns*nbCase)+nbCase);
             break;
-            case 5: newCase = this.cases.get(tabPlacment+(this.columns*nbCase));
+            case 5: newSquare = this.squares.get(tabPlacment+(this.columns*nbCase));
             break;
-            case 6: newCase = this.cases.get(tabPlacment+(this.columns*nbCase)-nbCase);
+            case 6: newSquare = this.squares.get(tabPlacment+(this.columns*nbCase)-nbCase);
             break;
-            case 7: newCase =  this.cases.get(tabPlacment-nbCase);
+            case 7: newSquare =  this.squares.get(tabPlacment-nbCase);
             break;
-            case 8: newCase = this.cases.get(tabPlacment-(this.columns*nbCase)-nbCase);
+            case 8: newSquare = this.squares.get(tabPlacment-(this.columns*nbCase)-nbCase);
             break;
+
             }
 
-            newCase.addToken(token);
+            newSquare.addToken(token);
         }catch (Exception e){
             e.printStackTrace();
         }

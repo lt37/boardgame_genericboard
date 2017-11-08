@@ -43,7 +43,7 @@
     <!-- ADAPTER les coordonnées -->
     <groupId>fr.univtln.m2dapm.boardgame</groupId>
     <artifactId>BoardGame_GenericBoard</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.2-SNAPSHOT</version>
     <packaging>jar</packaging>
     <!-- ADAPTER les coordonnées -->
 
@@ -93,6 +93,14 @@
             </plugin>
         </plugins>
     </build>
+
+    <distributionManagement>
+        <repository>
+            <id>bintray-maxtemmerier-maven-repo</id>
+            <name>maxtemmerier-maven-repo</name>
+            <url>https://api.bintray.com/maven/maxtemmerier/maven-repo/boardgame_genericboard/</url>
+        </repository>
+    </distributionManagement>
 
 
     <dependencies>
