@@ -2,8 +2,11 @@ package board;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Board {
+    private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
     private List<Square> squares = new ArrayList<>();
     private int lines;
     private int columns;
@@ -89,7 +92,7 @@ public class Board {
      * @param direction 1 (default) :TOP 2:TOP/RIGHT 3:RIGHT 4:BOTTOM/RIGHT 5:BOTTOM 6:BOTTOM/LEFT 7:LEFT 8: (default) TOP/LEFT
      * @param nbCase
      */
-    public void movment(IPlaceable token, int direction, int nbCase){
+    public void movement(IPlaceable token, int direction, int nbCase){
         int[] initialCoordonate = token.getSquare().getCoordinates();
         token.getSquare().removeToken(token);
         int tabPlacment = this.columns*initialCoordonate[1]+initialCoordonate[0];
@@ -114,12 +117,13 @@ public class Board {
             break;
             case 8: newSquare = this.squares.get(tabPlacment-(this.columns*nbCase)-nbCase);
             break;
-
+            default: newSquare = token.getSquare();
+            break;
             }
 
             newSquare.addToken(token);
-        }catch (Exception e){
-            e.printStackTrace();
+        } catch (Exception e){
+            LOGGER.log(Level.SEVERE, "Error on movement : ", e);
         }
 
 

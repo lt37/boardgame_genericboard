@@ -3,7 +3,6 @@ package cards;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.lang.IndexOutOfBoundsException;
 
 public class Deck {
     protected List<Card> cards;
