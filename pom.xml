@@ -97,7 +97,7 @@
     <distributionManagement>
         <repository>
             <id>bintray-maxtemmerier-maven-repo</id>
-            <name>maxtemmerier-maven-repo</name>
+            <name>MaxTemmerier-maven-repo</name>
             <url>https://api.bintray.com/maven/maxtemmerier/maven-repo/boardgame_genericboard/;publish=1</url>
         </repository>
     </distributionManagement>
