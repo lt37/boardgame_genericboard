@@ -15,12 +15,6 @@
             <username>${env.UTLN_EMAIL}</username>
             <password>${env.UTLN_PASSWORD}</password>
         </server>
-
-	<server>
-		<id>bintray-maxtemmerier-maven-repo</id>
-		<username>maxtemmerier</username>
-		<password>RXif9PCweztdeVQOfAsEZEm4GP8iI1cpwoKkFNHJ5XCNDUeWc06VM0dBXCoAB7JoV9qKJhxJQuRLVQDF3ySLzHEqw5J0hbPJXfzvWun2HIcFlX0QMhlbhAkqf/IKnxI8K3B3y28zpcgeJ1WSPJIW5Hmtx6wb30UmvZPSB/psVsjqiN081btN1BUzLTX43W/N8GCq1qeI3/vUV7S0KFNlQvB/oClYvTIPrNokU7yJlWS8bGMgksZH0cTZle3NLP4PyGTMzutrsSo1LL+FDLpAvTsmJvOc1RZoFipiJQRhwI3TyHv9x7cH9BxLM6nd+DvbLaf6KG12u11fj4zn7wRM4DElq4f0gh4/E3PjRxOZ4CmP+KzK0GT8SPfkuD2NAljlgh2DE7ACvVLQ2X8Q+4qXpaRZIqU4EbhETh8iv+2gY0wJdfmijMHnuT0gYyS9djYhsf1FQ04gPMOsrsWCv60BEmdQJAVX1isa3UymRUafqh/ZL7tZjN+tM0ZgB/NOuQMgTC6me6F1ACv3c+ziz5UTf/Yi4Fh0jrnZhEtenPfsOh7QuC36WJxLWeE9NrYA93KvfyeX/w7E9GqRAYtl/egw9sOk3iwIKRsMeiFJ1Sv4HZQbLsjWfGEVbOZ/LZKeEMKyX1tOMSch3OgZhc5izmbWde0qSKlSKbMia4l3++FVDEI=</password>
-	</server>
     </servers>
 
     <profiles>
