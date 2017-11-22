@@ -4,8 +4,8 @@
 			      https://maven.apache.org/xsd/settings-1.0.0.xsd">
     <servers>
         <server>
-            <id>bintray-dptinfoutln-public</id>
-            <username>brunoe</username>
+            <id>bintray-maxtemmerier-maven-repo</id>
+            <username>maxtemmerier</username>
             <password>${env.BINTRAY_API_KEY}</password>
         </server>
 
@@ -36,9 +36,9 @@
                     <snapshots>
                         <enabled>false</enabled>
                     </snapshots>
-                    <id>bintray-dptinfoutln-public</id>
+                    <id>bintray-maxtemmerier-maven-repo</id>
                     <name>bintray</name>
-                    <url>https://dl.bintray.com/dptinfoutln/public</url>
+                    <url>https://dl.bintray.com/maxtemmerier/maven-repo</url>
                 </repository>
             </repositories>
             <pluginRepositories>
@@ -46,9 +46,9 @@
                     <snapshots>
                         <enabled>false</enabled>
                     </snapshots>
-                    <id>bintray-dptinfoutln-public</id>
+                    <id>bintray-maxtemmerier-maven-repo</id>
                     <name>bintray-plugins</name>
-                    <url>https://dl.bintray.com/dptinfoutln/public</url>
+                    <url>https://dl.bintray.com/maxtemmerier/maven-repo</url>
                 </pluginRepository>
             </pluginRepositories>
         </profile>
