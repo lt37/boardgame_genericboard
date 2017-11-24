@@ -1,5 +1,7 @@
 package board;
 
+import sun.rmi.runtime.Log;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -39,6 +41,10 @@ public class Board {
         this.squares = squares;
     }
 
+    public Square getSquareOnCoord(int x , int y){
+        return this.squares.get(y*this.columns + x);
+    }
+
     public int getLines() {
         return lines;
     }
@@ -62,6 +68,8 @@ public class Board {
     public void setName(String name) {
         this.name = name;
     }
+
+
 
     @Override
     public boolean equals(Object o) {
@@ -87,12 +95,14 @@ public class Board {
 
 
     /**
-     *
+     * Move token  to nbCase in direction.
      * @param token
      * @param direction 1 (default) :TOP 2:TOP/RIGHT 3:RIGHT 4:BOTTOM/RIGHT 5:BOTTOM 6:BOTTOM/LEFT 7:LEFT 8: (default) TOP/LEFT
-     * @param nbCase
+     * @param nbSquare
      */
-    public void movement(IPlaceable token, int direction, int nbCase){
+
+    public void movement(IPlaceable token, int direction, int nbSquare){
+
         int[] initialCoordonate = token.getSquare().getCoordinates();
         token.getSquare().removeToken(token);
         int tabPlacment = this.columns*initialCoordonate[1]+initialCoordonate[0];
@@ -101,21 +111,21 @@ public class Board {
 
         try{
         switch(direction) {
-            case 1: newSquare = this.squares.get(tabPlacment-(this.columns*nbCase));
+            case 1: newSquare = this.squares.get(tabPlacment-(this.columns*nbSquare));
             break;
-            case 2: newSquare = this.squares.get(tabPlacment-(this.columns*nbCase)+nbCase);
+            case 2: newSquare = this.squares.get(tabPlacment-(this.columns*nbSquare)+nbSquare);
             break;
-            case 3: newSquare = this.squares.get(tabPlacment+nbCase);
+            case 3: newSquare = this.squares.get(tabPlacment+nbSquare);
             break;
-            case 4: newSquare = this.squares.get(tabPlacment+(this.columns*nbCase)+nbCase);
+            case 4: newSquare = this.squares.get(tabPlacment+(this.columns*nbSquare)+nbSquare);
             break;
-            case 5: newSquare = this.squares.get(tabPlacment+(this.columns*nbCase));
+            case 5: newSquare = this.squares.get(tabPlacment+(this.columns*nbSquare));
             break;
-            case 6: newSquare = this.squares.get(tabPlacment+(this.columns*nbCase)-nbCase);
+            case 6: newSquare = this.squares.get(tabPlacment+(this.columns*nbSquare)-nbSquare);
             break;
-            case 7: newSquare =  this.squares.get(tabPlacment-nbCase);
+            case 7: newSquare =  this.squares.get(tabPlacment-nbSquare);
             break;
-            case 8: newSquare = this.squares.get(tabPlacment-(this.columns*nbCase)-nbCase);
+            case 8: newSquare = this.squares.get(tabPlacment-(this.columns*nbSquare)-nbSquare);
             break;
             default: newSquare = token.getSquare();
             break;
@@ -126,6 +136,24 @@ public class Board {
             LOGGER.log(Level.SEVERE, "Error on movement : ", e);
         }
 
-
     }
+
+    /**
+     *  Place  Iplaceable "token" in the square that have coordonate x and y
+     * @param token
+     * @param x
+     * @param y
+     */
+    public void putTokenOn(IPlaceable token,int x, int y ){
+
+        if(x < this.columns && y < this.lines && x>=0 && y>=0){
+            this.squares.get(convertCoordToIndex(x,y)).addToken(token);
+        }
+        //Exception a rajouter
+    }
+
+    public int convertCoordToIndex(int x, int y){
+        return y*this.columns+x;
+    }
+
 }

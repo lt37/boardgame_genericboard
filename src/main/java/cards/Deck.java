@@ -124,4 +124,11 @@ public class Deck {
             cards.add(index, card);
         }
     }
+
+    public void addCard(Card addedCard, int index){
+        if(index >= cards.size()){
+            throw new IndexOutOfBoundsException();
+        }
+            cards.add(index, addedCard);
+    }
 }

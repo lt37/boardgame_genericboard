@@ -40,4 +40,5 @@ class DeckTest {
         assertTrue(drawedCards.size() == NB_DRAWS, "Number of drawed cards is equal to (" + NB_DRAWS + ") ? ------> " + drawedCards.size());
     }
 
+
 }
