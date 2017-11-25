@@ -1,6 +1,8 @@
 package board;
 
-public class PlaceableBehavior {
+import java.io.Serializable;
+
+public class PlaceableBehavior  implements Serializable {
         private Square square;
 
         public PlaceableBehavior(Square square) {

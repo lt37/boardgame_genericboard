@@ -1,5 +1,10 @@
 package dices;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -8,7 +13,13 @@ import java.util.Random;
  * This class represents the concept of a dice that contains a list of sides and can be rolled.
  * @param <T> The type of sides, in case the dice doesn't have integer values on it.
  */
-public class Dice<T> {
+
+@Entity
+public class Dice<T>  implements Serializable{
+
+    @Id
+    @GeneratedValue (strategy = GenerationType.AUTO)
+    int id;
 
     protected List<T> sides;
     protected int nbSides;
@@ -77,5 +88,34 @@ public class Dice<T> {
 
     public void setNbSides(int nbSides) {
         this.nbSides = nbSides;
+    }
+
+    @Override
+    public String toString() {
+        return "Dice{" +
+                "id=" + id +
+                ", sides=" + sides +
+                ", nbSides=" + nbSides +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Dice<?> dice = (Dice<?>) o;
+
+        if (id != dice.id) return false;
+        if (nbSides != dice.nbSides) return false;
+        return sides != null ? sides.equals(dice.sides) : dice.sides == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id;
+        result = 31 * result + (sides != null ? sides.hashCode() : 0);
+        result = 31 * result + nbSides;
+        return result;
     }
 }

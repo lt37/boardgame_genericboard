@@ -1,15 +1,27 @@
 package board;
 
-import sun.rmi.runtime.Log;
 
+import javax.persistence.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
-import java.util.logging.Logger;
+import org.apache.log4j.Logger;
 
-public class Board {
-    private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
+@Entity
+public class Board implements Serializable {
+
+    private static Logger logger = Logger.getLogger(Board.class);
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "board_id")
+    private int id;
+
+    @OneToMany
     private List<Square> squares = new ArrayList<>();
+
+
     private int lines;
     private int columns;
     private String name;
@@ -133,7 +145,7 @@ public class Board {
 
             newSquare.addToken(token);
         } catch (Exception e){
-            LOGGER.log(Level.SEVERE, "Error on movement : ", e);
+          logger.error("Error on movement: "+e);
         }
 
     }

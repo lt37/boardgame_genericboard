@@ -1,13 +1,23 @@
 package board;
 
+import javax.persistence.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Square {
+@Entity
+public class Square implements Serializable {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
+
+    @OneToMany
     private List<IPlaceable> tokens = new ArrayList<>();
+
     private int[] coordinates;
+
 
 
     Square(int[] coordinates) {
