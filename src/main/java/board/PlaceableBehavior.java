@@ -5,6 +5,8 @@ import java.io.Serializable;
 public class PlaceableBehavior  implements Serializable {
         private Square square;
 
+        public PlaceableBehavior() {}
+
         public PlaceableBehavior(Square square) {
                 this.square = square;
         }
