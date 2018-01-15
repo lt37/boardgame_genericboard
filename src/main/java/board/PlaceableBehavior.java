@@ -36,7 +36,7 @@ public class PlaceableBehavior  implements Serializable {
         return id;
     }
 
-    public int setId(int id) {
+    public void setId(int id) {
         this.id = id;
     }
 }
